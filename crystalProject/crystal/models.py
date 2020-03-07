@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-# con esta implementacion solo se podra cargar un auto por documento.
 
 class incidente(models.Model):
     document = models.CharField(max_length = 50, verbose_name= "Documento")
