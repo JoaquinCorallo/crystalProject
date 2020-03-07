@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <style type="text/css">
+        #header{
+            position: fixed;
+            top: 0;
+            bottom: 0; 
+            left: 0;
+            width: 100%;
+            height: 15%;
+            overflow: hidden;
+            background: #e2f;
+        }
+
+        main{
+			position: fixed;
+			top: 15%; 
+			left: 5%; 
+			right: 0;
+			bottom: 0;
+			overflow: auto; 
+			background: #fff;
+		}
+    </style>
+</head>
+
+<body>
+
+<nav id="header">
+    <div class="innertube">
+
+    </div>
+</nav>
+
+<main>
+    <div class="innertube">
+        <form method="POST">
+            <h2>Registrate aqui</h2>
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit">Registrar</button>
+        </form>
+                
+        <a href="/index">Volver al login</a>
+    </div>
+</main>
+
+</body>
+
+</html>

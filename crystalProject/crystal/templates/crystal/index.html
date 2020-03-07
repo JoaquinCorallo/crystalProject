@@ -1,0 +1,17 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    
+    <form method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Login</button>
+    </form>
+
+    <a href="/RegistroDeUsuario">Registrarse</a>
+</body>
+
+</html>

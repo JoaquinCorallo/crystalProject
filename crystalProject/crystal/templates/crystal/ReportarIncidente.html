@@ -1,0 +1,18 @@
+{% extends "baseLayout.html" %}
+<html>
+
+<head>
+    {% block title %} Reportar Incidente {% endblock %}
+</head>
+
+<body>
+    {% block content %}
+    <form method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Crear</button>
+    </form>
+    {% endblock %}
+</body>
+
+</html>
