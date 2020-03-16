@@ -7,12 +7,18 @@ from django.contrib.auth import login as do_login
 from django.contrib.auth.forms import UserCreationForm
 from .forms import incidenteForm
 from .models import incidente
+from django.db import connection
 
 
 def TodosLosIncidentesReportados(request):
     # Si estamos identificados devolvemos la portada
     if request.user.is_authenticated:
-        return render(request, 'crystal/TodosLosIncidentesReportados.html')
+        cursor = connection.cursor()
+        cursor.execute('''SELECT * FROM crystal_incidente''')
+        #row = cursor.fetchone()
+        row = cursor.fetchall()
+         
+        return render(request, 'crystal/TodosLosIncidentesReportados.html',{'var':row})
     # En otro caso redireccionamos al login
     return redirect('/index/')
 
@@ -20,7 +26,10 @@ def TodosLosIncidentesReportados(request):
 def IncidentesReportadosPorElUsuario(request):
     # Si estamos identificados devolvemos la portada
     if request.user.is_authenticated:
-        return render(request, 'crystal/IncidentesReportadosPorElUsuario.html')
+        cursor = connection.cursor()
+        cursor.execute('''SELECT * FROM crystal_incidente WHERE user = %s''', [request.user.username])
+        row = cursor.fetchall()
+        return render(request, 'crystal/IncidentesReportadosPorElUsuario.html',{'var':row})
     # En otro caso redireccionamos al login
     return redirect('/index/')
 
@@ -95,11 +104,19 @@ def ReportarIncidente(request):
             form = incidenteForm(request.POST)
             # Si el formulario es válido...
             if form.is_valid():
+                #form.data['user']. = request.user.username
                 # Guardamos el formulario pero sin confirmarlo,
                 # así conseguiremos una instancia para manejarla
                 instancia = form.save(commit=False)
                 # Podemos guardarla cuando queramos
                 instancia.save()
+
+                cursor1 = connection.cursor()
+                cursor1.execute('''SELECT max(id) FROM crystal_incidente  ''')
+                ultimo = cursor1.fetchone()[0]
+
+                cursor = connection.cursor()
+                cursor.execute("UPDATE crystal_incidente SET user = %s WHERE id = %s", [request.user.username,ultimo])
                 # Después de guardar redireccionamos a la lista
                 return redirect('/IncidentesReportadosPorElUsuario/')
 

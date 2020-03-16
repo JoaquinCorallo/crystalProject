@@ -8,7 +8,24 @@
 <body>
     {% block content %}
     <h2>INCIDENTES REPORTADOS POR EL USUARIO</h2>
-    {% endblock %}
+    <table>
+      <tr>
+          <th>No.</th>
+          <th>Name</th>
+          <th>Age</th>
+      </tr>
+      <ul>
+        {% for element in var %} 
+      <tr>
+          <td> {{ element.1}} </td>
+          <td> {{ element.1}} </td>
+          <td>16</td>
+      </tr>
+        {% endfor %}
+     </ul>
+     {% endblock %}
+     
+  </table>
 </body>
 
 </html>
