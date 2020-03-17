@@ -53,12 +53,49 @@
 			color: #555;
 		}
 
-		td {
-        border: black 2px solid;
-   		}
+		#incidentes {
+		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+		}
 
-		table {
-		background: lightblue;
+		#incidentes td, #incidentes th {
+		border: 1px solid #ddd;
+		padding: 8px;
+		}
+
+		#incidentes tr:nth-child(even){background-color: #f2f2f2;}
+
+		#incidentes tr:hover {background-color: #ddd;}
+
+		#incidentes th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: darkslateblue;
+		color: white;
+		}
+		.button {
+            background-color: darkslateblue;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            font-family: "Times New Roman", Times, serif;
+			box-shadow: 4px 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            }
+		.button:hover {
+		background-color: darkblue;
+		color: white;
+		box-shadow: 4px 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+		opacity: 0.6;
+		}
+		.button:active {
+		background-color: darkslateblue;
+		transform: translateY(4px);
+		opacity: 0.4;
 		}
 	</style>
 

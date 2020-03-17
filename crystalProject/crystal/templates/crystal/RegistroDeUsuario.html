@@ -15,13 +15,50 @@
 
         main{
 			position: fixed;
-			top: 15%; 
+			top: 21%; 
 			left: 5%; 
 			right: 0;
 			bottom: 0;
 			overflow: auto; 
 			background: #fff;
 		}
+
+        #nav2 {
+                position: fixed;
+                top: 15%;
+                bottom: 0;
+                left: 57%;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background: white;
+            }
+
+            .button {
+            background-color: darkslateblue;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            font-family: "Times New Roman", Times, serif;
+			box-shadow: 4px 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            }
+            .button:hover {
+            background-color: darkblue;
+            color: white;
+            box-shadow: 4px 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            opacity: 0.6;
+            }
+            .button:active {
+            background-color: darkslateblue;
+            transform: translateY(4px);
+            opacity: 0.4;
+            }
+
+        form { display: inline; }
+        
     </style>
 </head>
 
@@ -39,11 +76,15 @@
             <h2>Registrate aqui</h2>
             {{ form.as_p }}
             {% csrf_token %}
-            <button type="submit">Registrar</button>
+            <button type="submit" class="button" style="margin:40px;">Registrar</button>
         </form>
-                
-        <a href="/index">Volver al login</a>
+
+        <a href="/index" class="button" style="margin:30px;">Volver al login</a>
+        
     </div>
+    <nav id="nav2">
+        {% load static %}
+        <img src="{% static "crystal/BrokenGlass.jpg" %}" width="43%" height="85%" alt="Auto Roto" >
 </main>
 
 </body>
