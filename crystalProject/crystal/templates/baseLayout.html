@@ -51,6 +51,9 @@
 
 		p {
 			color: #555;
+			font-size: larger;
+			display: inline-block;
+
 		}
 
 		#incidentes {
@@ -97,6 +100,12 @@
 		transform: translateY(4px);
 		opacity: 0.4;
 		}
+		div.vertical-line{
+      width: 1px; 
+      background-color: gray; 
+      height: 90%; 
+      float: left;
+    }
 	</style>
 
 </head>
@@ -105,11 +114,15 @@
 
 	<nav id="header">
 		<div class="innertube">
+			{% load static %}
+				<img src="{% static "crystal/LOGO.png" %}" height="90%" alt="Logo" align="left">
+			<div class="vertical-line"></div>
 			<p>
-				Bienvenido/a <b>{{request.user.username}}</b>,
+				&nbsp &nbsp &nbsp Bienvenido/a <b>{{request.user.username}}</b> <br> 
+				&nbsp &nbsp &nbsp <a href="/logout" >Cerrar sesión</a>
 			</p>
 			
-			<a href="/logout">Cerrar sesión</a>
+			
 		</div>
 	</nav>
 
